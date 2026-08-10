@@ -11,14 +11,6 @@ This repository is for education, research prototyping, electronics development,
 - Wiring, electrode placement, and safety notes.
 - A simple text output format that is easy to inspect and modify.
 
-## What Is Not Included
-
-- Production firmware.
-- Wireless acquisition firmware.
-- High-performance batching, synchronization, or packet-loss handling code.
-- PCB source files, Gerbers, production BOM, or manufacturing test files.
-- Medical, diagnostic, treatment, or safety-critical software.
-
 ## Examples
 
 | Example | Board | Output | Best for |
