@@ -1,0 +1,65 @@
+# AAW sEMG OSS
+
+Beginner-friendly open-source examples for reading AAW Lab surface EMG module output with Arduino or ESP32 and visualizing the signal with Teleplot.
+
+This repository is for education, research prototyping, electronics development, and non-diagnostic experiments. It is not a medical device project.
+
+## What Is Included
+
+- Basic Arduino analog-read example for Teleplot.
+- Basic ESP32 analog-read example for Teleplot.
+- Wiring, electrode placement, and safety notes.
+- A simple text output format that is easy to inspect and modify.
+
+## What Is Not Included
+
+- Production firmware.
+- Wireless acquisition firmware.
+- High-performance batching, synchronization, or packet-loss handling code.
+- PCB source files, Gerbers, production BOM, or manufacturing test files.
+- Medical, diagnostic, treatment, or safety-critical software.
+
+## Examples
+
+| Example | Board | Output | Best for |
+| --- | --- | --- | --- |
+| [`arduino-analog-teleplot`](examples/arduino-analog-teleplot/) | Arduino Uno/Nano/Mega compatible boards | `>emg:512` | First analog-output test |
+| [`esp32-analog-teleplot`](examples/esp32-analog-teleplot/) | ESP32 development boards | `>emg:2048` and `>emg_v:1.650` | Quick ESP32 validation |
+
+## Quick Start
+
+1. Connect the sEMG module output to an ADC-capable pin.
+2. Power the module from a safe isolated supply. Battery power is recommended for first tests.
+3. Upload one of the example sketches.
+4. Open Teleplot and connect to the board serial port.
+5. Relax your hand, then make a fist. The waveform should change with muscle contraction.
+
+Read [`docs/quick-start.md`](docs/quick-start.md) before testing.
+
+## Teleplot Format
+
+The examples print one sample per line:
+
+```text
+>emg:512
+```
+
+ESP32 example also prints an estimated voltage:
+
+```text
+>emg_v:1.650
+```
+
+See [`docs/teleplot.md`](docs/teleplot.md).
+
+## Safety
+
+AAW Lab sEMG modules and examples are for education, research prototyping, electronics development, and non-diagnostic experiments only.
+
+Do not use them for medical diagnosis, treatment, vital-sign monitoring, or safety-critical control. Do not connect human-connected experiments to mains-referenced equipment.
+
+Read [`docs/safety.md`](docs/safety.md).
+
+## License
+
+Code examples are released under the MIT License. Documentation is released under CC BY-NC-SA 4.0. See [`LICENSE`](LICENSE).
