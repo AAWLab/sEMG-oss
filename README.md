@@ -1,6 +1,6 @@
 # AAW sEMG OSS
 
-Beginner-friendly open-source examples for reading AAW Lab surface EMG module output with Arduino or ESP32 and visualizing the signal with Teleplot.
+Beginner-friendly open-source examples and Python tools for reading AAW Lab surface EMG module output.
 
 This repository is for education, research prototyping, electronics development, and non-diagnostic experiments. It is not a medical device project.
 
@@ -8,6 +8,7 @@ This repository is for education, research prototyping, electronics development,
 
 - Basic Arduino analog-read example for Teleplot.
 - Basic ESP32 analog-read example for Teleplot.
+- Python SDK and CLI for AAW Lab sEMG wireless dongle streams.
 - Wiring, electrode placement, and safety notes.
 - A simple text output format that is easy to inspect and modify.
 
@@ -17,6 +18,29 @@ This repository is for education, research prototyping, electronics development,
 | --- | --- | --- | --- |
 | [`arduino-analog-teleplot`](examples/arduino-analog-teleplot/) | Arduino Uno/Nano/Mega compatible boards | `>emg:512` | First analog-output test |
 | [`esp32-analog-teleplot`](examples/esp32-analog-teleplot/) | ESP32 development boards | `>emg:2048` and `>emg_v:1.650` | Quick ESP32 validation |
+
+## Python SDK
+
+The Python SDK lives in [`python/`](python/):
+
+```python
+from aawlab_emg import WirelessReader
+
+with WirelessReader("/dev/tty.usbmodemXXX") as reader:
+    for event in reader:
+        if event.type == "batch":
+            print(event.device_id, event.sample_rate_hz, event.samples)
+```
+
+CLI examples:
+
+```bash
+aaw-emg list
+aaw-emg stream --port /dev/tty.usbmodemXXX
+aaw-emg record --port /dev/tty.usbmodemXXX --duration 30 --csv trial.csv
+```
+
+See [`docs/python-sdk.md`](docs/python-sdk.md).
 
 ## Quick Start
 
